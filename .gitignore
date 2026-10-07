@@ -1,0 +1,30 @@
+node_modules/
+dist/
+build/
+lux3d-delivery/
+.DS_Store
+.env
+.env.*
+!.env.example
+*.log
+coverage/
+playwright-report/
+test-results/
+__pycache__/
+*.py[cod]
+*.blend1
+
+# Keep only the GLBs used by the current web experience.
+public/models/*.glb
+!public/models/boat-fisherman-cast-v11.glb
+!public/models/fisherman.glb
+public/models/lux3d-20261002/*.glb
+!public/models/lux3d-20261002/baitfish_optimized.glb
+!public/models/lux3d-20261002/green_sea_turtle_optimized.glb
+!public/models/lux3d-20261002/moon_jellyfish_optimized.glb
+public/models/surface-40-80/*.glb
+!public/models/surface-40-80/ocean-sunfish-v4.glb
+!public/models/surface-40-80/blue-shark-v2.glb
+
+# Reference imagery is not required to run the site.
+assets/references/

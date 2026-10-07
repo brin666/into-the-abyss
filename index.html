@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0a425a" />
+    <title>Into the Abyss — Surface Layer</title>
+  </head>
+  <body>
+    <main class="page" id="page">
+      <section class="scene-frame" id="scene-frame" aria-label="Into the Abyss surface scene">
+        <canvas id="scene-canvas"></canvas>
+        <div class="atmosphere"></div>
+        <div class="vignette"></div>
+        <div class="flat-dive" id="flat-dive" aria-hidden="true">
+          <div class="flat-dive__water"></div>
+          <div class="flat-dive__sky">
+            <div class="flat-dive__sky-glow"></div>
+          </div>
+          <div class="flat-dive__surface-glow"></div>
+          <div class="flat-dive__surface">
+            <div class="flat-dive__surface-band"></div>
+            <div class="flat-dive__surface-line flat-dive__surface-line--one"></div>
+            <div class="flat-dive__surface-line flat-dive__surface-line--two"></div>
+            <div class="flat-dive__surface-waves" aria-hidden="true">
+              <span class="flat-dive__surface-wave flat-dive__surface-wave--far-left"></span>
+              <span class="flat-dive__surface-wave flat-dive__surface-wave--far-right"></span>
+              <span class="flat-dive__surface-wave flat-dive__surface-wave--near"></span>
+            </div>
+            <div class="flat-dive__boat-wake" aria-hidden="true"></div>
+            <div class="flat-dive__boat">
+              <span class="flat-dive__boat-hull"></span>
+              <span class="flat-dive__boat-deck"></span>
+              <span class="flat-dive__boat-person"></span>
+              <span class="flat-dive__boat-rod"></span>
+            </div>
+          </div>
+          <div class="flat-dive__sun-shaft flat-dive__sun-shaft--one"></div>
+          <div class="flat-dive__sun-shaft flat-dive__sun-shaft--two"></div>
+          <div class="flat-dive__particles"></div>
+          <canvas class="flat-dive__creature-canvas" id="creature-canvas" aria-hidden="true"></canvas>
+          <div class="flat-dive__observation-shade" aria-hidden="true"></div>
+          <div class="flat-dive__line"></div>
+          <div class="flat-dive__hook"><span></span></div>
+          <button class="flat-dive__creature flat-dive__fish flat-dive__fish--school" type="button" data-creature="baitfish" aria-label="Open encyclopedia entry for coastal baitfish"></button>
+          <button class="flat-dive__creature flat-dive__turtle" type="button" data-creature="turtle" aria-label="Open encyclopedia entry for green sea turtle"></button>
+          <button class="flat-dive__creature flat-dive__jelly flat-dive__jelly--one" type="button" data-creature="jelly" aria-label="Open encyclopedia entry for moon jelly"><span></span></button>
+          <button class="flat-dive__creature flat-dive__jelly flat-dive__jelly--two" type="button" data-creature="jelly" aria-label="Open encyclopedia entry for moon jelly"><span></span></button>
+          <button class="flat-dive__creature flat-dive__sunfish" type="button" data-creature="sunfish" aria-label="Open encyclopedia entry for ocean sunfish"></button>
+          <button class="flat-dive__creature flat-dive__shark" type="button" data-creature="shark" aria-label="Open encyclopedia entry for blue shark"></button>
+          <div class="flat-dive__caption">FLAT DESCENT / 0–40M</div>
+        </div>
+
+        <div class="hud hud-top">
+          <div class="brand-block">
+            <div class="eyebrow">SCROLL-DRIVEN DEEP SEA STUDY / 001</div>
+            <h1>INTO THE ABYSS</h1>
+          </div>
+        <div class="state-chip" id="state-chip">SURFACE / OPENING</div>
+        </div>
+
+        <div class="hud depth-panel">
+          <div class="hud-label">CURRENT DEPTH</div>
+          <div class="depth-value" id="depth-value">000<span>m</span></div>
+          <div class="zone-value" id="zone-value">SURFACE LAYER</div>
+        </div>
+
+        <div class="scene-hint" id="scene-hint">A FISHERMAN WAITS ABOVE THE WATER</div>
+
+        <div class="target-card" id="target-card" aria-hidden="true">
+          <div class="target-kicker">LIVING SUBJECT / 01</div>
+          <div class="target-title">THE ANGLER</div>
+          <p>The fisherman casts once each time you enter.</p>
+          <div class="target-action">FIRST CAST / AUTOMATIC</div>
+        </div>
+
+        <aside class="creature-info" id="creature-info" aria-hidden="true" aria-labelledby="creature-info-name">
+          <div class="creature-info__topline">
+            <div>
+              <div class="creature-info__kicker" id="creature-info-kicker">FIELD GUIDE / SUNLIGHT ZONE</div>
+          <div class="creature-info__index" id="creature-info-index">01 / 05</div>
+            </div>
+            <button class="creature-info__dismiss" type="button" data-close-observation aria-label="Close creature encyclopedia">×</button>
+          </div>
+
+          <div class="creature-info__scroll" id="creature-info-content" aria-live="polite">
+            <div class="creature-info__title-block">
+              <div class="creature-info__english" id="creature-info-english">Green sea turtle</div>
+              <h2 id="creature-info-name">绿海龟</h2>
+              <div class="creature-info__latin" id="creature-info-latin">Chelonia mydas</div>
+            </div>
+
+            <div class="creature-info__current">
+              <span class="creature-info__current-dot" aria-hidden="true"></span>
+              <span>YOU ARE HERE · 当前深度</span>
+              <strong id="creature-info-current-depth">08 m</strong>
+            </div>
+
+            <div class="creature-info__stats">
+              <div><span>TYPICAL WATER LAYER · 常见水层</span><strong id="creature-info-depth">成体：浅海沿岸；幼体：远洋水域</strong></div>
+              <div><span id="creature-info-size-label">ADULT LENGTH · 成体体长</span><strong id="creature-info-size">0.9–1.2 m</strong></div>
+            </div>
+
+            <section class="creature-info__section">
+              <div class="creature-info__section-label">HABITAT · 栖息环境</div>
+              <p id="creature-info-habitat">成体主要以海草和藻类为食，在沿岸觅食地活动；幼体阶段会利用远洋漂浮生境。</p>
+            </section>
+
+            <section class="creature-info__section creature-info__field-note">
+              <div class="creature-info__section-label">FIELD NOTE · 观察札记</div>
+              <p id="creature-info-fact">Green turtles are mostly herbivorous as adults and must surface to breathe.</p>
+            </section>
+
+            <div class="creature-info__source">
+              <span class="creature-info__section-label">BIOLOGY REFERENCE · 资料来源</span>
+              <a id="creature-info-source" href="https://www.fisheries.noaa.gov/species/green-turtle" target="_blank" rel="noopener noreferrer">NOAA Fisheries ↗</a>
+              <small id="creature-info-source-note">栖息水层会随生活阶段变化；这里展示的是常见生境类型，不是固定深度边界。</small>
+            </div>
+          </div>
+
+          <div class="creature-info__footer">
+            <span>0–40 M · SUNLIT WATER</span>
+            <button class="creature-info__close" id="creature-info-close" type="button" data-close-observation>RETURN TO DESCENT <span>↗</span></button>
+          </div>
+        </aside>
+
+        <div class="hud hud-bottom">
+          <div class="bottom-note">A QUIET LINE ABOVE A VERY LARGE WORLD</div>
+          <div class="scroll-meter">
+            <span>01</span>
+            <div class="meter-track"><div class="meter-fill" id="meter-fill"></div></div>
+            <span>SURFACE</span>
+          </div>
+        </div>
+
+        <div class="loading-state" id="loading-state">INITIALIZING SURFACE / 001</div>
+        <div class="fallback-state" id="fallback-state" hidden>
+          This experience needs WebGL to render the surface scene.
+        </div>
+      </section>
+      <div class="scroll-space" aria-hidden="true"></div>
+    </main>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
